@@ -23,11 +23,9 @@ class SplashScreenVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-      
-    }
-
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         let prefs:UserDefaults = UserDefaults.standard
         if prefs.value(forKey: "startUpNotif") != nil{
             let userInfo: [AnyHashable: Any] = ["inactive": "inactive"]
@@ -36,6 +34,8 @@ class SplashScreenVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         NotificationCenter.default.removeObserver(self)
     }
     

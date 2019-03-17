@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
             prefs.set(remoteNotification as! [AnyHashable: Any], forKey: "startUpNotif")
             prefs.synchronize()
-        }
-        else if launchOptions?[UIApplicationLaunchOptionsKey.localNotification] != nil {
+        } else if launchOptions?[UIApplicationLaunchOptionsKey.localNotification] != nil {
             prefs.set("SOMESTRING", forKey: "startUpNotif")
             prefs.synchronize()
         }
@@ -78,12 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch category {
             case typeOfLocalNotificationsICanReceive.kind.rawValue:
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let customNavController = mainStoryboard.instantiateViewController(withIdentifier: "customNav1") as? UINavigationController else{
+                guard let customNavController = mainStoryboard.instantiateViewController(withIdentifier: "customNav1") as? UINavigationController else {
                     return
                 }
                 customNavController.viewControllers = [NewRootViewController.prepareViewController()]
                 self.window?.rootViewController = customNavController
-                break
             default:
                 break
             }
